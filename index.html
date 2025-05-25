@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Mensagens</title>
+    <link rel="icon" href="https://i.imgur.com/Rf8RgFs.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .logo-text {
+            background: linear-gradient(90deg, #25D366, #128C7E);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        .dashboard {
+            background: linear-gradient(135deg, #ffffff, #f5f7fa);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+        .btn-generate {
+            background: linear-gradient(90deg, #25D366, #128C7E);
+            transition: all 0.3s ease;
+        }
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        .message-preview {
+            background-color: #DCF8C6;
+            border-radius: 7.5px;
+            position: relative;
+        }
+        .message-preview:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid #DCF8C6;
+            border-left: 10px solid transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="flex flex-col md:flex-row items-center justify-center md:justify-between mb-8">
+            <div class="flex items-center mb-4 md:mb-0">
+                <svg class="w-12 h-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="url(#paint0_linear)" />
+                    <path d="M50 25C36.2 25 25 36.2 25 50C25 55.2 26.6 60.1 29.2 64.2L26.5 75L37.7 72.4C41.6 74.6 45.7 75.9 50 75.9C63.8 75.9 75 64.7 75 50.9C75 37.1 63.8 25 50 25ZM64.3 62.5C63.4 65.1 59.7 67.2 56.8 67.7C54.8 68.1 52.1 68.3 43.9 64.8C33.6 60.4 27.1 50 26.6 49.3C26.1 48.6 22.5 43.7 22.5 38.6C22.5 33.5 25 31.1 26.1 30C27 29.1 28.3 28.7 29.5 28.7C29.9 28.7 30.3 28.7 30.6 28.8C31.7 28.8 32.2 29 32.9 30.5C33.7 32.4 35.6 37.5 35.9 38.2C36.1 38.9 36.3 39.7 36 40.6C35.7 41.5 35.5 41.9 34.8 42.7C34.1 43.5 33.4 44.1 32.7 45C32.1 45.7 31.4 46.5 32.2 47.9C33 49.3 35.6 53.4 39.3 56.7C44 60.9 47.8 62.3 49.4 62.9C50.6 63.4 52 63.3 52.8 62.4C53.8 61.3 55.1 59.5 56.4 57.8C57.3 56.6 58.5 56.4 59.7 56.9C60.9 57.4 66 59.9 67.3 60.5C68.6 61.1 69.4 61.4 69.7 62C69.9 62.7 69.9 65.3 68.9 68.3L64.3 62.5Z" fill="white"/>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#25D366"/>
+                            <stop offset="1" stop-color="#128C7E"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="ml-3">
+                    <h1 class="text-3xl font-bold logo-text">TEKINFORMÁTICA</h1>
+                    <p class="text-gray-600 text-sm">Soluções tecnológicas para seu negócio</p>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <div class="flex items-center mb-1">
+                    <svg class="h-4 w-4 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                    <span class="text-sm">Telefone: (21) 97628-6027</span>
+                </div>
+                <div class="flex items-center">
+                    <svg class="h-4 w-4 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <span class="text-sm">Email: tekin.formatica@hotmail.com</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard rounded-xl p-6 md:p-8">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800">Gerador de Mensagens WhatsApp</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <div class="mb-4">
+                        <label for="clientName" class="block text-sm font-medium text-gray-700 mb-1">Nome do Cliente</label>
+                        <input type="text" id="clientName" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Digite o nome do cliente">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="clientPhone" class="block text-sm font-medium text-gray-700 mb-1">Telefone do Cliente</label>
+                        <input type="text" id="clientPhone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" value="5521" placeholder="5521XXXXXXXXX">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Selecione uma Mensagem</label>
+                        <div class="space-y-2">
+
+                            <div class="flex items-center">
+                                <input type="radio" id="msg1" name="message" value="Olá! Oii, tudo bem? Seja bem vindo a loja Tekinformática. Meu nome é Ricardo e qualquer dúvida estarei aqui." class="mr-2" checked>
+                                <label for="msg1" class="text-sm text-gray-700">Entrada de Cliente</label>
+                            </div>
+
+                            <div class="flex items-center">
+                                <input type="radio" id="msg2" name="message" value="Olá! Oii, tudo bem? Seu equipamento está pronto." class="mr-2">
+                                <label for="msg2" class="text-sm text-gray-700">Equipamento pronto</label>
+                            </div>
+
+                            <div class="flex items-center">
+                                <input type="radio" id="msg3" name="message" value="Olá! Oii, tudo bem? Gostaria de saber o valor dos produtos abaixo." class="mr-2">
+                                <label for="msg3" class="text-sm text-gray-700">Cotação de preço</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <button id="generateBtn" class="btn-generate w-full py-3 px-6 text-white font-medium rounded-md">
+                        Gerar Mensagem
+                    </button>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium mb-3 text-gray-800">Pré-visualização</h3>
+                    <div class="bg-[#E5DDD5] p-4 rounded-lg h-64 overflow-y-auto relative">
+                        <div class="flex justify-end mb-4">
+                            <div class="message-preview p-3 max-w-xs">
+                                <p id="previewText" class="text-sm text-gray-800">Olá! Oii, tudo bem? SEU EQUIPAMENTO ESTÁ PRONTO.</p>
+                                <div class="flex justify-end mt-1">
+                                    <span class="text-xs text-gray-500">12:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-[#F0F0F0] p-3 flex items-center">
+                            <div class="bg-white rounded-full flex-1 px-4 py-2 text-sm text-gray-400">
+                                Digite uma mensagem
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="mt-6 text-center text-gray-400 text-xs">
+            &copy; 2011 TEKINFORMÁTICA. Todos os direitos reservados.
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const clientNameInput = document.getElementById('clientName');
+            const clientPhoneInput = document.getElementById('clientPhone');
+            const generateBtn = document.getElementById('generateBtn');
+            const previewText = document.getElementById('previewText');
+            const messageRadios = document.querySelectorAll('input[name="message"]');
+            
+            // Ensure phone starts with 5521
+            clientPhoneInput.addEventListener('focus', function() {
+                if (!this.value) {
+                    this.value = '5521';
+                }
+            });
+            
+            clientPhoneInput.addEventListener('input', function() {
+                if (!this.value.startsWith('5521')) {
+                    this.value = '5521' + this.value.replace(/^5521/, '');
+                }
+            });
+            
+            // Update preview when selecting a message
+            messageRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    updatePreview();
+                });
+            });
+            
+            // Update preview function
+            function updatePreview() {
+                const selectedMessage = document.querySelector('input[name="message"]:checked').value;
+                let finalMessage = selectedMessage;
+                
+                if (clientNameInput.value) {
+                    finalMessage = finalMessage.replace(/Olá!/, `Olá ${clientNameInput.value}!`);
+                }
+                
+                previewText.textContent = finalMessage;
+            }
+            
+            // Listen for name input to update preview
+            clientNameInput.addEventListener('input', updatePreview);
+            
+            // Generate WhatsApp link
+            generateBtn.addEventListener('click', function() {
+                const phone = clientPhoneInput.value.trim();
+                if (!phone || phone === '5521') {
+                    alert('Por favor, insira um número de telefone válido.');
+                    return;
+                }
+                
+                const selectedMessage = document.querySelector('input[name="message"]:checked').value;
+                let finalMessage = selectedMessage;
+                
+                if (clientNameInput.value) {
+                    finalMessage = finalMessage.replace(/Olá!/, `Olá ${clientNameInput.value}!`);
+                }
+                
+                const encodedMessage = encodeURIComponent(finalMessage);
+                const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
+                
+                window.open(whatsappUrl, '_blank');
+            });
+            
+            // Initialize preview
+            updatePreview();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'944ad3c091326499',t:'MTc0ODA2OTA5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
